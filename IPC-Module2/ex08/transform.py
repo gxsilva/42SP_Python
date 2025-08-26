@@ -6,28 +6,16 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/25 17:44:48 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/25 18:14:54 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/26 09:46:04 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import sys
 
-
-def is_even(x: int) -> bool:
-    """[Function]: Checks if a number is odd"""
-    return x % 2 == 0
-
-
-def square_opt(x: int) -> int:
-    """[Function]: Square a number"""
-    return x**2
-
-
 def square_even_numbers(intArray: list[int]) -> list[int]:
     """[Function]: captures the even values ​​and raises it to the exponent 2"""
-    even_list = list(filter(is_even, intArray))
-    square_list = list(map(square_opt, even_list))
-    return square_list
+    square_even_list = [x**2 for x in intArray if x % 2 == 0]
+    return (square_even_list)
 
 
 def main() -> int:
