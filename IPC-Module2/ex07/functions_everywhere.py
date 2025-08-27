@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/25 15:19:49 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/26 09:27:19 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/26 11:40:44 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ def main() -> int:
                 print(sys.argv[x])
         return 0
     else:
+        print (None)
         return 1
 
 
