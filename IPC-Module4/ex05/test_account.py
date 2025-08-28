@@ -6,13 +6,13 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 10:13:02 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/28 12:41:29 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 12:46:14 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import pytest
 
-from account import Account
+from account import Account, InsufficientBalance, InvalidDescription
 from utils import format_cents
 
 # ----------------- ACCOUNT-------------------
@@ -72,7 +72,7 @@ def test_account_invalid_description_deposit() -> None:
 
 	ac = Account(class_public_id, class_public_cpf)
 
-	with pytest.raises(NameError):
+	with pytest.raises(InvalidDescription):
 		ac.deposit(122, "")
 
 # ----------------- ACCOUNT WITHDRAW -------------------
@@ -110,7 +110,7 @@ def test_acoount_withdraw_invalid_description() -> None:
 	ac = Account(class_public_id, class_public_cpf)
 
 	ac.deposit(55, "Deposit")
-	with pytest.raises(NameError):
+	with pytest.raises(InvalidDescription):
 		ac.withdraw(10, "")
 
 
@@ -122,5 +122,5 @@ def test_acoount_withdraw_invalid_balance() -> None:
 	ac = Account(class_public_id, class_public_cpf)
 
 	ac.deposit(55, "Deposit")
-	with pytest.raises(ValueError):
+	with pytest.raises(InsufficientBalance):
 		ac.withdraw(57, "Paying the bill")

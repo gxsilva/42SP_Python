@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 18:13:00 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/27 19:41:32 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 12:55:44 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ def test_opeartion_initialization_credit() -> None:
 	o1 = Operation(45, "Buy food")
 	assert o1.cents == 45
 	assert o1.description == "Buy food"
-	assert o1.operation == "credit"
+	assert o1.operation_type == "credit"
 
 def test_opeartion_initialization_debit() -> None:
 	o1 = Operation(-15, "Pay bill")
 	assert o1.cents == -15
 	assert o1.description == "Pay bill"
-	assert o1.operation == "debit"
+	assert o1.operation_type == "debit"
 
 def test_operation_format_cents() -> None:
 	o1 = Operation(26000, "Buy a gameboy advanced")

@@ -6,12 +6,20 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 19:42:05 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/28 12:40:58 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 12:52:21 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from utils import format_cents
 
+class InsufficientBalance(Exception):
+	"""Exception class to insufficiet balance"""
+	pass
+
+class InvalidDescription(Exception):
+	"""Exception class to invalide operation description"""
+	pass
+	
 class Account:
 	"""Class responsible for creating an object with value representation in cents and operations"""
 	def __init__(self, id: int, cpf: str) -> None:
@@ -28,7 +36,7 @@ class Account:
 		"""performs deposit the value of cents in the object instance"""
 		if not description:
 			print ("Descrição de deposito inválida")
-			raise NameError
+			raise InvalidDescription
 		if amount <= 0:
 			print ("Valor deve ser > 0")
 			raise ValueError
@@ -39,13 +47,13 @@ class Account:
 		"""makes the withdrawal from the account based on the amount of the amount passed"""
 		if not description:
 			print ("Descrição de saque inválida")
-			raise NameError
+			raise InvalidDescription
 		if amount <= 0:
 			print ("Valor deve ser > 0")
 			raise ValueError
 		if self.__balance - amount < 0:
 			print ("Insufficient balance to withdraw")
-			raise ValueError
+			raise InsufficientBalance
 		self.__balance -= amount
 		self.__operations.append(f"{format_cents(self.__balance)} {description}")
 #		self.__operations[description] = self.__balance
