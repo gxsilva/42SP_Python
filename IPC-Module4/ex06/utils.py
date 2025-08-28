@@ -1,22 +1,19 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    person.py                                          :+:      :+:    :+:    #
+#    utils.py                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/27 09:13:31 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/28 18:34:26 by lsilva-x         ###   ########.fr        #
+#    Created: 2025/08/27 16:08:14 by lsilva-x          #+#    #+#              #
+#    Updated: 2025/08/28 11:05:32 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-class Person:
-	"""A class uses da to instantiate an object with name, age and a method to increase the age by 1"""
-	def __init__(self, name: str, age: int) -> None:
-		"""Parametrizied constructor from Person class"""
-		self.name = name
-		self.age = age
-	
-	def birthday(self) -> None:
-		"""Method to increase age in one"""
-		self.age = self.age + 1
+def format_cents(value: int) -> str:
+	"""Converts an integer (or float | not recommended) value to a formatted money representation"""
+	formatted_money = ""
+	sign = "[+]" if value >= 0 else "[-]"
+	value_f = abs(value) / 100
+	formatted_money = "{} R$ {:,.2f}".format(sign, value_f).replace(",", "X").replace(".", ",").replace("X", ".")
+	return formatted_money

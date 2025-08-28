@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 16:08:15 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/27 19:09:17 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 18:43:13 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,6 @@ def test_format_cents_negative_int() -> None:
 	excepted = "[-] R$ 98,00"
 	result = format_cents(input)
 	assert result == excepted
-
-# def test_format_cents_positive_float() -> None:
-# 	"""Teste format_cents function with positive float values"""
-# 	input = 416.48
-# 	excepted = "[+] R$ 416,48"
-# 	result = format_cents(input)
-# 	assert result == excepted
 
 def test_format_cents_negative_float() -> None:
 	"""Teste format_cents function with negative float values"""
@@ -73,5 +66,12 @@ def test_format_cents_underscore() -> None:
 # 	"""Teste format_cents function with large negative float values"""
 # 	input = -68435.25
 # 	excepted = "[-] R$ 68.435,25"
+# 	result = format_cents(input)
+# 	assert result == excepted
+
+# def test_format_cents_positive_float() -> None:
+# 	"""Teste format_cents function with positive float values"""
+# 	input = 416.48
+# 	excepted = "[+] R$ 416,48"
 # 	result = format_cents(input)
 # 	assert result == excepted

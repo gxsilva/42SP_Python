@@ -6,7 +6,7 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 19:42:05 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/28 18:43:28 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 18:31:28 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,25 +33,20 @@ class Account:
 	def deposit(self, amount: int, description: str) -> None:
 		"""performs deposit the value of cents in the object instance"""
 		if not description:
-			print ("Descrição de deposito inválida")
-			raise InvalidDescription
+			raise InvalidDescription("Descrição de deposito inválida")
 		if amount <= 0:
-			print ("Valor deve ser > 0")
-			raise ValueError
+			raise ValueError("Valor deve ser > 0")
 		self.__balance += amount
 		self.__operations.append(f"{format_cents(self.__balance)} {description}")
 
 	def withdraw(self, amount: int, description: str) -> None:
 		"""makes the withdrawal from the account based on the amount of the amount passed"""
 		if not description:
-			print ("Descrição de saque inválida")
-			raise InvalidDescription
+			raise InvalidDescription("Descrição de saque inválida")
 		if amount <= 0:
-			print ("Valor deve ser > 0")
-			raise ValueError
+			raise ValueError("Valor deve ser > 0")
 		if self.__balance - amount < 0:
-			print ("Insufficient balance to withdraw")
-			raise InsufficientBalance
+			raise InsufficientBalance("Saldo insuficiente para saque")
 		self.__balance -= amount
 		self.__operations.append(f"{format_cents(self.__balance)} {description}")
 #		self.__operations[description] = self.__balance
@@ -60,8 +55,6 @@ class Account:
 		"""makes a complete printout of all deposit and withdrawal operations with descriptions"""
 		for opt in self.__operations:
 			print (opt)
-
-	#------------------ Getter -----------
 
 	@property
 	def balance(self) -> int:
@@ -72,8 +65,6 @@ class Account:
 	def operation(self) -> list[str]:
 		"""return the __operation list attribute"""
 		return self.__operations
-
-	#------------------ Dunder special methods -----------
 
 	def __str__(self) -> str:
 		"""handles the printable text form of the class instance"""

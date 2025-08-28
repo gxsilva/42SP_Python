@@ -6,14 +6,16 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 17:58:30 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/28 12:55:50 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 18:38:58 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from utils import format_cents
 
 class Operation:
+	"""Clasclass responsible for handling credit and debit transactions"""
 	def __init__(self, cents: int, description: str) -> None:
+		"""Parametrizied constructor from Operation class"""
 		if cents == 0:
 			raise ValueError
 		self.cents = cents
@@ -21,8 +23,10 @@ class Operation:
 		self.operation_type = "credit" if cents > 0 else "debit"
 	
 	def __str__(self) -> str:
+		"""handles the printable text form of the class instance"""
 		return format_cents(self.cents)
 	
 	def __repr__(self) -> str:
+		"""handles the text form of printing the class instance in debug mode"""
 		return f"Operation(cents={self.cents}, operation_type='{self.operation_type}', description={self.description})"
 	
