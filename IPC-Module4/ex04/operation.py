@@ -6,14 +6,17 @@
 #    By: lsilva-x <lsilva-x@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/27 17:58:30 by lsilva-x          #+#    #+#              #
-#    Updated: 2025/08/27 19:40:12 by lsilva-x         ###   ########.fr        #
+#    Updated: 2025/08/28 12:03:30 by lsilva-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from utils import format_cents
 
 class Operation:
+	"""creates an object that handles deposits and withdrawals and debits and credits in an account quoted in cents"""
+	
 	def __init__(self, cents: int, description: str) -> None:
+		"""Parameterized operation class construcotr"""
 		if cents == 0:
 			raise ValueError
 		self.cents = cents
@@ -21,8 +24,10 @@ class Operation:
 		self.operation = "credit" if cents > 0 else "debit"
 	
 	def __str__(self) -> str:
+		"""handles the printable text form of the class instance"""
 		return format_cents(self.cents)
 	
 	def __repr__(self) -> str:
+		"""handles the text form of printing the class instance in debug mode"""
 		return f"Operation(cents={self.cents}, operation_type='{self.operation}', description={self.description})"
 	
